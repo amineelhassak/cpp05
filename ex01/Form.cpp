@@ -31,7 +31,7 @@ Form::Form(const std::string name, const int toSigne, const int toExcute) : name
 
 Form::~Form()
 {
-    std::cout << "Form : deconstractor is called " << std::endl;
+    std::cout << "Form : Destractor is called " << std::endl;
 }
 
 Form::Form(const Form &_form):name(_form.name),gradeToSign(_form.gradeToSign),gradeToExecute(_form.gradeToExecute)
@@ -70,7 +70,7 @@ int Form::getGradeToExecute	( void ) const
 
 std::ostream &operator << (std::ostream &out,Form &form)
 {
-    out << form.getName() << "Form : SignedBool " << form.getSignedBool() << "GradeToExecute :" << form.getGradeToExecute() << "GradeToSign " << form.getGradeToSign()<< std::endl;
+    out << form.getName() << " SignedBool " << form.getSignedBool() << " GradeToSign : " << form.getGradeToSign() << " GradeToExecute : " << form.getGradeToExecute() << std::endl;
     return (out);
 }
 
