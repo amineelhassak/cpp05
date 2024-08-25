@@ -2,47 +2,47 @@
 
 Form::Form():name("_default"),isSigned(false),gradeToSign(150),gradeToExecute(150)
 {
-    std::cout << "Form : default constractor is called " << std::endl;
+    std::cout << "Form : " << this->name << " default constractor is called " << std::endl;
 }
 
 Form::Form(const std::string name):name(name),isSigned(false),gradeToSign(150),gradeToExecute(150)
 {
-    std::cout << "I) Form :  parameterized constractor is called " << std::endl;
+    std::cout << "I) Form : " <<  this->name << " parameterized constractor is called " << std::endl;
 }
 
 
 Form::Form(const int toSigne, const int toExcute) : name("_default"), isSigned(false),gradeToSign(toSigne), gradeToExecute(toExcute)
 {
+    std::cout << "II) Form : " << this->name << " parameterized constractor is called " << std::endl;
     if (toSigne < 1 || toExcute < 1)
         throw GradeTooHighException();
     if (toSigne > 150 || toExcute > 150)
         throw GradeTooLowException();
-    std::cout << "II) Form : parameterized constractor is called " << std::endl;
 }
 
 Form::Form(const std::string name, const int toSigne, const int toExcute) : name(name),isSigned(false) ,gradeToSign(toSigne), gradeToExecute(toExcute)
 {
+    std::cout << "III) Form : " << this->name << " parameterized constractor is called " << std::endl;
     if (toSigne < 1 || toExcute < 1)
         throw GradeTooHighException();
     if (toSigne > 150 || toExcute > 150)
         throw GradeTooLowException();
-    std::cout << "III) Form : parameterized constractor is called " << std::endl;
 }
 
 Form::~Form()
 {
-    std::cout << "Form : Destractor is called " << std::endl;
+    std::cout << "Form : " << this->name << " Destractor is called " << std::endl;
 }
 
 Form::Form(const Form &_form):name(_form.name),gradeToSign(_form.gradeToSign),gradeToExecute(_form.gradeToExecute)
 {
     *this = _form;
-    std::cout << "Form :  Copy Constructor is Called " << std::endl;
+    std::cout << "Form : " << this->name <<"Copy Constructor is Called " << std::endl;
 }
 
 Form &Form::operator=(const Form &form)
 {
-    std::cout << "Form  : Assignment Operator "<< std::endl;
+    std::cout << "Form  : " << this->name << " Assignment Operator "<< std::endl;
     if (this != &form)
         this->isSigned = form.isSigned;
     return (*this);
