@@ -10,7 +10,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string &target):AForm("ShrubberyCr
     std::cout << "RobotomyRequestForm : " << this->target << " constractor is callled" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &Robo)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &Robo):AForm(Robo)
 {
     std::cout << "RobotomyRequestForm : " << this->target <<" parametrized constractor is called" << std::endl;
     *this = Robo;

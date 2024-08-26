@@ -10,7 +10,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string &target):AForm("Presi
     std::cout << "PresidentialPardonForm : " << this->target << " parametrized constractor is called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &Robo)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &Robo):AForm(Robo)
 {
     std::cout << "PresidentialPardonForm : "<< this->target <<" parametrized constractor is called" << std::endl;
     *this = Robo;
