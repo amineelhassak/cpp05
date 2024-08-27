@@ -16,9 +16,9 @@ class AForm
 	public:
 		AForm();
 		AForm(const AForm &Aform);
-		AForm(const std::string name);
+		AForm(const std::string &name);
 		AForm(const int toSigne, const int toExcute);
-		AForm(const std::string name, const int toSigne, const int toExcute);
+		AForm(const std::string &name, const int toSigne, const int toExcute);
 		virtual void excute( Bureaucrat const & ) const  = 0;
 		AForm &operator=(const AForm &Aform);
 		~AForm();

@@ -36,7 +36,7 @@ void Bureaucrat::executeForm(AForm const & form)
 	{
 		form.excute(*this);
 		std::cout << this->name + " excute " + form.getName() << std::endl;
-		return;
+		return ;
 	}
 	std::cout << this->name + " cannot excute " + form.getName() + " because "
 	" Grade is low \n";

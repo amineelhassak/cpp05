@@ -15,9 +15,9 @@ class Form
 	public:
 		Form();
 		Form(const Form &form);
-		Form(const std::string name);
+		Form(const std::string &name);
 		Form(const int toSigne, const int toExcute);
-		Form(const std::string name, const int toSigne, const int toExcute);
+		Form(const std::string &name, const int toSigne, const int toExcute);
 		Form &operator=(const Form &form);
 		~Form();
 		std::string getName 	( void ) const;
@@ -27,15 +27,15 @@ class Form
 		class GradeTooHighException:public std::exception
 		{
 			public:
-				virtual const char *wath() const throw();
+				virtual const char *what() const throw();
 		};
 		class GradeTooLowException:public std::exception
 		{
 			public:
-				virtual const char *wath() const throw();
+				virtual const char *what() const throw();
 		};
 		void beSigned(Bureaucrat &bureaucrat);
 };
 
-std::ostream &operator << (std::ostream &out, Form &form);
+std::ostream &operator<<(std::ostream &out, const Form &form);
 #endif

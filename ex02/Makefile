@@ -1,7 +1,7 @@
 SRCS = $(wildcard *.cpp)
 HPP = $(wildcard *.hpp)
 OBJS = $(SRCS:.cpp=.o)
-EXEC =	Bureaucrat
+EXEC =	AForm
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98

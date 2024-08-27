@@ -70,11 +70,11 @@ int main() {
         }
         catch(const Form::GradeTooLowException &e)
         {
-            std::cout << e.wath() << std::endl;
+            std::cout << e.what() << std::endl;
         }
         catch(const Form::GradeTooHighException &e)
         {
-            std::cout << e.wath() << std::endl;
+            std::cout << e.what() << std::endl;
         }
         try
         {
@@ -82,11 +82,11 @@ int main() {
         }
         catch(const Form::GradeTooLowException &e)
         {
-            std::cout << e.wath() << std::endl;
+            std::cout << e.what() << std::endl;
         }
         catch(const Form::GradeTooHighException &e)
         {
-            std::cout << e.wath() << std::endl;
+            std::cout << e.what() << std::endl;
         }
     }
     return (0);

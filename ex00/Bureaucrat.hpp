@@ -11,10 +11,13 @@ class Bureaucrat
         
     public:
         Bureaucrat();
+        Bureaucrat &operator =(const Bureaucrat & bur);
+        Bureaucrat(const Bureaucrat &bur);
+        ~Bureaucrat();
+
         Bureaucrat(int grade);
         Bureaucrat(const std::string &name);
         Bureaucrat(const std::string &name, int grade);
-
         const std::string &getName() const;
         int getGrade() const;
         void increment();
@@ -29,7 +32,6 @@ class Bureaucrat
             public:
                 virtual const char* what() const throw();
         };
-        ~Bureaucrat();
 };
 
 std::ostream& operator<< (std::ostream& out, const  Bureaucrat &bureaucrat );
