@@ -43,8 +43,17 @@ int main() {
     // catch (const Bureaucrat::GradeTooLowException &e) {
     //     std::cerr << "Caught an exception: " << e.what() << std::endl;
     // }
-    Bureaucrat bur;
-    ShrubberyCreationForm sub;
-    sub.excute(bur);
+    try
+    {
+        // Bureaucrat bur("amine",146);
+        // ShrubberyCreationForm sub;
+        // sub.excute(bur);
+        ShrubberyCreationForm shru;
+    }
+    catch (std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    
     return (0);
 }

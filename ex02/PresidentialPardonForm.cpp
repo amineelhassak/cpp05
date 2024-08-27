@@ -21,13 +21,17 @@ PresidentialPardonForm &PresidentialPardonForm::operator = (const PresidentialPa
     std::cout << "PresidentialPardonForm : " << this->target << " Assignment Operator "<< std::endl;
     if (this != &Robo)
     {
+        *this = Robo;
         this->target = Robo.target;
     }
     return (*this);
 }
 
-void PresidentialPardonForm::excute( Bureaucrat const & ) const{
-  
+void PresidentialPardonForm::excute( Bureaucrat const & bure) const
+{
+    if (bure.getGrade() > this->getGradeToSign())
+        throw AForm::GradeTooLowException();
+    std::cout << this->target <<" has been pardoned by Zaphod Beeblebrox" << std::endl;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm()

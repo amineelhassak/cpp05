@@ -2,8 +2,9 @@
 # define ROBOTOMYREQUESTFORM_HPP
 
 # include <iostream>
+# include <cstdlib>
+# include <ctime>
 # include "AForm.hpp"
-
 class RobotomyRequestForm : public AForm
 {
     private:
@@ -13,8 +14,9 @@ class RobotomyRequestForm : public AForm
         RobotomyRequestForm(std::string &);
         RobotomyRequestForm(const RobotomyRequestForm &);
         RobotomyRequestForm &operator =(const RobotomyRequestForm &);
-        ~RobotomyRequestForm();
         void excute( Bureaucrat const & ) const;
+        ~RobotomyRequestForm();
 };
 
 #endif
+

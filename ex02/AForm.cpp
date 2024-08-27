@@ -71,7 +71,7 @@ int AForm::getGradeToExecute	( void ) const
 std::ostream &operator << (std::ostream &out,AForm &Aform)
 {
     out << Aform.getName() << " SignedBool " << Aform.getSignedBool() << " GradeToSign : " << Aform.getGradeToSign() << " GradeToExecute : " << Aform.getGradeToExecute() << std::endl;
-    return (out);
+    return (out);  
 }
 
 void    AForm::beSigned(Bureaucrat &bureaucrat)
@@ -82,12 +82,12 @@ void    AForm::beSigned(Bureaucrat &bureaucrat)
     std::cout << this->getName() << " AForm was signed by " << bureaucrat.getName() << std::endl;
 }
 
-const char * AForm::GradeTooLowException::wath() const throw()
+const char * AForm::GradeTooLowException::what() const throw()
 {
     return ("AForm Too Low");
 }
 
-const char * AForm::GradeTooHighException::wath() const throw()
+const char * AForm::GradeTooHighException::what() const throw()
 {
     return ("AForm Too Hight");
 }
