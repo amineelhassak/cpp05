@@ -1,11 +1,18 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
+// void leak()
+// {
+//     system("leaks Bureaucrat");
+// }
+
 int main() {
+    // atexit(leak);
     {
         try 
         {
             {
+                std::cout << "\x1b[32m" << std::endl;
                 Bureaucrat b2("Alice", 42);
                 std::cout << b2.getName() << ", bureaucrat grade " << b2.getGrade() << std::endl;
                 b2.increment();

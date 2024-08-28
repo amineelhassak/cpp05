@@ -8,7 +8,6 @@ class Bureaucrat
     private:
         const std::string   name;
         int                 grade;
-        
     public:
         Bureaucrat();
         Bureaucrat &operator =(const Bureaucrat & bur);
@@ -18,10 +17,13 @@ class Bureaucrat
         Bureaucrat(int grade);
         Bureaucrat(const std::string &name);
         Bureaucrat(const std::string &name, int grade);
+
         const std::string &getName() const;
         int getGrade() const;
+
         void increment();
         void decrement();
+
         class GradeTooHighException : public std::exception
         {   
             public:

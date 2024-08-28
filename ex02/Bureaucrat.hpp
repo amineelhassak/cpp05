@@ -2,13 +2,15 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
+#include "AForm.hpp"
+class AForm;
+
 
 class Bureaucrat
 {
     private:
         const std::string   name;
         int                 grade;
-        
     public:
         Bureaucrat();
         Bureaucrat &operator =(const Bureaucrat & bur);
@@ -18,8 +20,10 @@ class Bureaucrat
         Bureaucrat(int grade);
         Bureaucrat(const std::string &name);
         Bureaucrat(const std::string &name, int grade);
+
         const std::string &getName() const;
         int getGrade() const;
+
         void increment();
         void decrement();
         class GradeTooHighException : public std::exception
@@ -32,6 +36,8 @@ class Bureaucrat
             public:
                 virtual const char* what() const throw();
         };
+        void executeForm(AForm const & form);
+        void signForm(AForm &form);
 };
 
 std::ostream& operator<< (std::ostream& out, const  Bureaucrat &bureaucrat );

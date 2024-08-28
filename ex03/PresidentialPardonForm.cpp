@@ -2,17 +2,17 @@
 
 PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5),target("_default")
 {
-    std::cout << "PresidentialPardonForm : " << this->target << " constractor is callled" << std::endl;
+    std::cout << "PresidentialPardonForm : " << this->target << " * constractor is callled" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string const &target):AForm("PresidentialPardonForm", 25, 5),target(target)
 {
-    std::cout << "PresidentialPardonForm : " << this->target << " parametrized constractor is called" << std::endl;
+    std::cout << "PresidentialPardonForm : " << this->target << " ** parametrized constractor is called" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &Robo):AForm(Robo)
 {
-    std::cout << "PresidentialPardonForm : "<< this->target <<" parametrized constractor is called" << std::endl;
+    std::cout << "PresidentialPardonForm : "<< this->target <<" *** parametrized constractor is called" << std::endl;
     *this = Robo;
 }
 

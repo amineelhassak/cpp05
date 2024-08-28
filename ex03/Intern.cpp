@@ -35,6 +35,20 @@ AForm* Intern::makeForm(std::string const & formName, std::string const & target
         return (NULL);
 }
 
+AForm* Intern::createShrubberyForm(std::string const & target)
+{
+    return new ShrubberyCreationForm(target);
+}
+
+AForm* Intern::createRobotomyForm(std::string const & target)
+{
+            return new RobotomyRequestForm(target);
+}
+
+AForm* Intern::createPresidentialForm(std::string const & target)
+{
+    return new PresidentialPardonForm(target);
+}
 
 Intern &Intern::operator = (const Intern &Robo)
 {

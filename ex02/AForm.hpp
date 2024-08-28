@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include "Bureaucrat.hpp"
-
 class Bureaucrat;
 
 class AForm
@@ -15,17 +14,20 @@ class AForm
     	const	int gradeToExecute;
 	public:
 		AForm();
+		AForm &operator=(const AForm &Aform);
 		AForm(const AForm &Aform);
+		~AForm();
+
 		AForm(const std::string &name);
 		AForm(const int toSigne, const int toExcute);
 		AForm(const std::string &name, const int toSigne, const int toExcute);
+
 		virtual void excute( Bureaucrat const & ) const  = 0;
-		AForm &operator=(const AForm &Aform);
-		~AForm();
-		std::string getName 	( void ) const;
-		bool getSignedBool  	( void ) const;
-		int  getGradeToSign  	( void ) const;
-		int  getGradeToExecute	( void ) const;
+		std::string	getName 	( void ) const;
+		bool		getSignedBool  	( void ) const;
+		int 		getGradeToSign  	( void ) const;
+		int 		getGradeToExecute	( void ) const;
+
 		class GradeTooHighException:public std::exception
 		{
 			public:
@@ -39,5 +41,5 @@ class AForm
 		void beSigned(Bureaucrat &bureaucrat);
 };
 
-std::ostream &operator << (std::ostream &out, AForm &Aform);
+std::ostream &operator<<(std::ostream &out, const AForm &Aform);
 #endif

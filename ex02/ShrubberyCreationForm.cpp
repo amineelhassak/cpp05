@@ -5,7 +5,7 @@ ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 
     std::cout << "ShrubberyCreationForm : " << this->target << " constructor is called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string &target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target)
     : AForm("ShrubberyCreationForm", 145, 137), target(target)
 {
     std::cout << "ShrubberyCreationForm : " << this->target << " constructor is called" << std::endl;

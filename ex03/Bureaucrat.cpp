@@ -1,90 +1,121 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat():name("_default"),grade(150)
+Bureaucrat::Bureaucrat() : name("_default"), grade(150)
 {
-    std::cout << "Bureaucrat : default constractor is called " << std::endl;
-};
+    std::cout << "Bureaucrat : constructeur par défaut est appelé " << std::endl;
+}
 
-Bureaucrat::Bureaucrat(const std::string &name):name(name),grade(150)
+Bureaucrat::Bureaucrat(const Bureaucrat &bur) : name(bur.name), grade(bur.grade)
 {
-    std::cout << "Bureaucrat : " << this->name << " constructor #* parameterized  is called " << std::endl;
-};
+    std::cout << "Bureaucrat : constructeur de copie est appelé pour " << this->name << std::endl;
+}
 
-Bureaucrat::Bureaucrat(int grade):name("_default")
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat &bur)
 {
-    std::cout << "Bureaucrat : " << this->name << " constructor #* parameterized  is called " << std::endl;
+    std::cout << "Bureaucrat : " << this->name << " opérateur d'assignation appelé " << std::endl;
+    if (this != &bur)
+        this->grade = bur.grade;
+    return *this;
+}
+
+Bureaucrat::Bureaucrat(const std::string &name) : name(name), grade(150)
+{
+    std::cout << "Bureaucrat : " << this->name << " constructeur avec nom est appelé " << std::endl;
+}
+
+Bureaucrat::Bureaucrat(int grade) : name("_default")
+{
+    std::cout << "Bureaucrat : " << this->name << " constructeur avec note est appelé " << std::endl;
     if (grade < 1)
         throw Bureaucrat::GradeTooHighException();
     if (grade > 150)
         throw Bureaucrat::GradeTooLowException();
     this->grade = grade;
-};
+}
 
-Bureaucrat::Bureaucrat(const std::string &name, int _grade) : name(name)
+Bureaucrat::Bureaucrat(const std::string &name, int grade) : name(name)
 {
-    std::cout << "Bureaucrat : " << this->name << " constructor ** parameterized  is called " << std::endl;
-    if (_grade < 1)
+    std::cout << "Bureaucrat : " << this->name << " constructeur avec nom et note est appelé " << std::endl;
+    if (grade < 1)
         throw Bureaucrat::GradeTooHighException();
-    if (_grade > 150)
+    if (grade > 150)
         throw Bureaucrat::GradeTooLowException();
-    this->grade = _grade;
-};
-
-void Bureaucrat::executeForm(AForm const & form)
-{
-	if (this->grade <= form.getGradeToSign())
-	{
-		form.excute(*this);
-		std::cout << this->name + " excute " + form.getName() << std::endl;
-		return ;
-	}
-	std::cout << this->name + " cannot excute " + form.getName() + " because "
-	" Grade is low \n";
-
+    this->grade = grade;
 }
 
 int Bureaucrat::getGrade() const
 {
     return (this->grade);
-};
+}
 
-const std::string &Bureaucrat::getName() const
+const std::string& Bureaucrat::getName() const
 {
-    return (this->name);
-};
+    return this->name;
+}
 
 void Bureaucrat::increment()
 {
-    std::cout << "Bureaucrat : " <<  this->name << " increment grade" << std::endl;
-    if (this->grade - 1 < 1)
+    std::cout << "Bureaucrat : " << this->name << " augmente la note" << std::endl;
+    if (this->grade <= 1)
         throw Bureaucrat::GradeTooHighException();
     this->grade--;
-};
+}
 
-void  Bureaucrat::decrement()
+void Bureaucrat::decrement()
 {
-    std::cout << "Bureaucrat : " << this->name << " decrement grade" << std::endl;
-    if (this->grade + 1 > 150)
+    std::cout << "Bureaucrat : " << this->name << " diminue la note" << std::endl;
+    if (this->grade >= 150)
         throw Bureaucrat::GradeTooLowException();
     this->grade++;
-};
+}
 
-std::ostream& operator<< (std::ostream& out, const  Bureaucrat &bureaucrat ) {
-    out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << std::endl;
+std::ostream& operator<<(std::ostream& out, const Bureaucrat &bureaucrat)
+{
+    out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
     return (out);
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-    return ("Bureaucrat Grade Too High");
+    return ("La note du bureaucrate est trop élevée");
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-    return ("Bureaucrat Grade Too Low");
+    return ("La note du bureaucrate est trop basse");
+}
+
+void Bureaucrat::signForm(AForm &form)
+{   
+    if (!form.getSignedBool() && this->getGrade() > form.getGradeToSign())
+    {
+        std::cout << this->name << " couldn/’t sign " << form.getName() << "because " << std::endl;
+        throw Bureaucrat::GradeTooLowException();
+    }
+    else
+    {
+        std::cout << this->name << " signed " << form.getName()<< std::endl;
+        form.beSigned(*this);
+    }
+}
+
+void Bureaucrat::executeForm(AForm const & form)
+{
+	if (form.getSignedBool() || this->grade <= form.getGradeToSign())
+	{
+		form.excute(*this);
+		std::cout << this->name + " excute " + form.getName() << std::endl;
+		return ;
+	}
+    else
+    {
+	    std::cout << this->name + " cannot excute " + form.getName() + " because "
+	    " Grade is low \n";
+        throw Bureaucrat::GradeTooLowException();
+    }
 }
 
 Bureaucrat::~Bureaucrat()
 {
-    std::cout << "Bureaucrat : " << this->name << " destractor is called " << std::endl;
+    std::cout << "Bureaucrat : " << this->name << " destructeur est appelé " << std::endl;
 }
